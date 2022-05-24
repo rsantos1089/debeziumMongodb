@@ -61,7 +61,7 @@
 		{
 		"mode": "NULLABLE",
 		"name": "snapshot",
-		"type": "BOOLEAN"
+		"type": "STRING"
 		},
 		{
 		"mode": "NULLABLE",
@@ -129,8 +129,25 @@
 		"type": "INTEGER"
 	},
 	{
+		"fields": 	[
+		{
+		"mode": "NULLABLE",
+		"name": "id",
+		"type": "STRING"
+		},
+		{
+		"mode": "NULLABLE",
+		"name": "total_order",
+		"type": "INTEGER"
+		},
+		{
+		"mode": "NULLABLE",
+		"name": "data_collection_order",
+		"type": "INTEGER"
+		}
+		            ],
 		"mode": "NULLABLE",
 		"name": "transaction",
-		"type": "STRING"
+		"type": "RECORD"
 	}
 ]
