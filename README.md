@@ -1,20 +1,38 @@
 # debeziumMongodb
 
 ```bash
-docker build -t <name of your docker> -t gcr.io/chrome-coast-348406/<name of your docker> <path>
-docker build -t debezium_custom -t gcr.io/chrome-coast-348406/debezium_custom .
-docker images
+#build
+docker build -t <name of your docker> -t gcr.io/<project_name>/<name of your docker> <path>
+ex: docker build -t debezium_custom -t gcr.io/chrome-coast-348406/debezium_custom .
+
+# load docker image to GCR
 docker push gcr.io/chrome-coast-348406/debezium_custom
+
+# run docker image from GCR
 docker run gcr.io/chrome-coast-348406/debezium_custom
+
+#deploy docker image to k8s
 kubectl create deployment debezium --image=gcr.io/chrome-coast-348406/debezium_custom -r=3
+
+#validate if k8s create successfully
 kubectl get pods
+
+# restart k8s if change any setting
 kubectl rollout restart deployment debezium
+
+#check how run the pods
 kubectl describe pod debezium-7895d4f89-2cn7c
+
+# validate the logs
 kubectl logs -f debezium-7895d4f89-2cn7c
 
-kubectl create deployment debezium --image=gcr.io/chrome-coast-348406/debezium_custom -r=
+# increase or decrease replicaset of k8s
 kubectl scale deployment debezium --replicas=2
+
+# validate number of replica set in k8s
 kubectl get rs
+
+# check the logs
 kubectl get pods -l app=debezium
 ```
 
